@@ -1,8 +1,9 @@
 import 'package:auvnet_flutter_assessment/features/splash_screen/presentation/views/splash_view.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(DevicePreview(builder: (context) => MainApp()));
 }
 
 class MainApp extends StatelessWidget {
