@@ -1,47 +1,25 @@
-import 'package:auvnet_flutter_assessment/core/utils/app_font_style.dart';
-import 'package:auvnet_flutter_assessment/core/utils/image_assets.dart';
-import 'package:auvnet_flutter_assessment/core/widgets/custom_elevated_button.dart';
-import 'package:auvnet_flutter_assessment/features/auth/presentation/widgets/custom_text_form_field.dart';
+import 'package:auvnet_flutter_assessment/core/service_locator/service_locator.dart';
+import 'package:auvnet_flutter_assessment/features/auth/domain/use_cases/login_use_case.dart';
+import 'package:auvnet_flutter_assessment/features/auth/domain/use_cases/signup_use_case.dart';
+import 'package:auvnet_flutter_assessment/features/auth/presentation/manger/auth_bloc/auth_bloc.dart';
+import 'package:auvnet_flutter_assessment/features/auth/presentation/views/widgets/signup_view_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SignUpView extends StatelessWidget {
+class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
 
   @override
+  State<SignUpView> createState() => _SignUpViewState();
+}
+
+class _SignUpViewState extends State<SignUpView> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
-        child: SingleChildScrollView(
-          child: Column(
-            spacing: 18,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(child: Image.asset(ImageAssets.logoImage)),
-              CustomTextFormField(
-                hintText: 'Email',
-                icon: Icons.email_outlined,
-              ),
-              CustomTextFormField(
-                hintText: 'Password',
-                icon: Icons.lock_outline_rounded,
-              ),
-              CustomTextFormField(
-                hintText: 'Confirm Password',
-                icon: Icons.lock_outline_rounded,
-              ),
-              CustomElevatedButton(buttonTitle: 'Sign up', onPressed: () {}),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Already have account',
-                  style: AppFontStyle.dmSansBold14,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+    return BlocProvider(
+      create: (context) =>
+          AuthBloc(getIt.get<LoginUseCase>(), getIt.get<SignupUseCase>()),
+      child: Scaffold(body: SignUpViewBody()),
     );
   }
 }

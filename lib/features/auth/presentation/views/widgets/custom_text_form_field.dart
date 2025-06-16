@@ -8,12 +8,21 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     required this.hintText,
     required this.icon,
+    this.validator,
+    this.controller,
+    this.obsecure = false,
   });
   final String hintText;
   final IconData icon;
+  final String? Function(String? value)? validator;
+  final TextEditingController? controller;
+  final bool obsecure;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: obsecure,
+      validator: validator,
+      controller: controller,
       decoration: InputDecoration(
         hintStyle: AppFontStyle.textFormMulishFont14,
         hintText: hintText,

@@ -3,7 +3,7 @@ import 'package:auvnet_flutter_assessment/core/utils/app_font_style.dart';
 import 'package:auvnet_flutter_assessment/core/utils/route_services.dart';
 import 'package:auvnet_flutter_assessment/core/widgets/custom_elevated_button.dart';
 import 'package:auvnet_flutter_assessment/features/auth/presentation/views/login_view.dart';
-import 'package:auvnet_flutter_assessment/features/onboarding/presentation/widgets/inftro_text_section.dart';
+import 'package:auvnet_flutter_assessment/features/onboarding/presentation/views/widgets/inftro_text_section.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

@@ -1,6 +1,6 @@
 import 'package:auvnet_flutter_assessment/core/constant.dart';
-import 'package:auvnet_flutter_assessment/features/onboarding/presentation/widgets/onboarding_body.dart';
-import 'package:auvnet_flutter_assessment/features/onboarding/presentation/widgets/onboarding_header.dart';
+import 'package:auvnet_flutter_assessment/features/onboarding/presentation/views/widgets/onboarding_body.dart';
+import 'package:auvnet_flutter_assessment/features/onboarding/presentation/views/widgets/onboarding_header.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingViewBody extends StatefulWidget {
