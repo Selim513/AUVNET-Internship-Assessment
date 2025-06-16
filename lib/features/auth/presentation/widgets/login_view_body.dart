@@ -13,24 +13,29 @@ class LoginViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
-      child: Column(
-        spacing: 18,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(child: Image.asset(ImageAssets.logoImage)),
-          CustomTextFormField(hintText: 'Email', icon: Icons.email_outlined),
-          CustomTextFormField(
-            hintText: 'Password',
-            icon: Icons.lock_outline_rounded,
-          ),
-          CustomElevatedButton(buttonTitle: 'Login', onPressed: () {}),
-          TextButton(
-            onPressed: () {
-              AppRouteServices.push(context, page: SignUpView());
-            },
-            child: Text('Create an account', style: AppFontStyle.dmSansBold14),
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          spacing: 18,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(child: Image.asset(ImageAssets.logoImage)),
+            CustomTextFormField(hintText: 'Email', icon: Icons.email_outlined),
+            CustomTextFormField(
+              hintText: 'Password',
+              icon: Icons.lock_outline_rounded,
+            ),
+            CustomElevatedButton(buttonTitle: 'Login', onPressed: () {}),
+            TextButton(
+              onPressed: () {
+                AppRouteServices.push(context, page: SignUpView());
+              },
+              child: Text(
+                'Create an account',
+                style: AppFontStyle.dmSansBold14,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -12,29 +12,34 @@ class SignUpView extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
-        child: Column(
-          spacing: 18,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(child: Image.asset(ImageAssets.logoImage)),
-            CustomTextFormField(hintText: 'Email', icon: Icons.email_outlined),
-            CustomTextFormField(
-              hintText: 'Password',
-              icon: Icons.lock_outline_rounded,
-            ),
-            CustomTextFormField(
-              hintText: 'Confirm Password',
-              icon: Icons.lock_outline_rounded,
-            ),
-            CustomElevatedButton(buttonTitle: 'Sign up', onPressed: () {}),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                'Already have account',
-                style: AppFontStyle.dmSansBold14,
+        child: SingleChildScrollView(
+          child: Column(
+            spacing: 18,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(child: Image.asset(ImageAssets.logoImage)),
+              CustomTextFormField(
+                hintText: 'Email',
+                icon: Icons.email_outlined,
               ),
-            ),
-          ],
+              CustomTextFormField(
+                hintText: 'Password',
+                icon: Icons.lock_outline_rounded,
+              ),
+              CustomTextFormField(
+                hintText: 'Confirm Password',
+                icon: Icons.lock_outline_rounded,
+              ),
+              CustomElevatedButton(buttonTitle: 'Sign up', onPressed: () {}),
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  'Already have account',
+                  style: AppFontStyle.dmSansBold14,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
