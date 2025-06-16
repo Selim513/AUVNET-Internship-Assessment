@@ -1,3 +1,5 @@
+import 'package:auvnet_flutter_assessment/core/utils/app_color.dart';
+import 'package:auvnet_flutter_assessment/core/utils/app_font_style.dart';
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -17,7 +19,7 @@ class CustomElevatedButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,
-          backgroundColor: Color(0xff8900FE),
+          backgroundColor: AppColors.primaryColor,
           shape: ContinuousRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(15),
           ),
@@ -25,7 +27,10 @@ class CustomElevatedButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           buttonTitle,
-          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+          style: AppFontStyle.titleRubikFont28.copyWith(
+            fontSize: 18,
+            color: Colors.white,
+          ),
         ),
       ),
     );

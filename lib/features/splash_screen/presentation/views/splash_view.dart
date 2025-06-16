@@ -1,3 +1,4 @@
+import 'package:auvnet_flutter_assessment/core/utils/route_services.dart';
 import 'package:auvnet_flutter_assessment/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:flutter/material.dart';
 
@@ -14,10 +15,7 @@ class _SplashViewState extends State<SplashView> {
     // TODO: implement initState
     super.initState();
     Future.delayed(Duration(seconds: 2)).then((value) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => OnboardingView()),
-      );
+      AppRouteServices.pushReplaceMent(context, page: OnboardingView());
     });
   }
 

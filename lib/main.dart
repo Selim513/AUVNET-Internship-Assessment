@@ -14,6 +14,6 @@ class MainApp extends StatelessWidget {
       theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
       home: SplashView(),
-    );  
+    );
   }
 }

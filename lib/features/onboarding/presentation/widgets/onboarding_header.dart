@@ -1,3 +1,5 @@
+import 'package:auvnet_flutter_assessment/core/utils/image_assets.dart';
+import 'package:auvnet_flutter_assessment/features/onboarding/presentation/widgets/onboarding_gradient_circle.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingHeader extends StatelessWidget {
@@ -8,24 +10,8 @@ class OnBoardingHeader extends StatelessWidget {
     return Expanded(
       child: Stack(
         children: [
-          Positioned(
-            top: -50,
-            left: -50,
-            child: Container(
-              width: 350,
-              height: 350,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(
-                  colors: [Color(0xff8900FE), Color(0xffFFDE59)],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  stops: [0.0, 0.8],
-                ),
-              ),
-            ),
-          ),
-          Center(child: Image.asset('assets/images/nawel.png')),
+          Positioned(top: -60, left: -50, child: OnboardingGradientCircle()),
+          Center(child: Image.asset(ImageAssets.logoImage)),
         ],
       ),
     );
