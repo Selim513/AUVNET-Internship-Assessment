@@ -1,10 +1,10 @@
 abstract class AuthEvents {}
 
-class LoginEent extends AuthEvents {
+class LoginEvent extends AuthEvents {
   final String email;
   final String password;
 
-  LoginEent({required this.email, required this.password});
+  LoginEvent({required this.email, required this.password});
 }
 
 class SignUpEvent extends AuthEvents {

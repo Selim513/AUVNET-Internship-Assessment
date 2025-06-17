@@ -1,4 +1,3 @@
-import 'package:auvnet_flutter_assessment/core/utils/app_font_style.dart';
 import 'package:auvnet_flutter_assessment/core/utils/image_assets.dart';
 import 'package:auvnet_flutter_assessment/core/utils/route_services.dart';
 import 'package:auvnet_flutter_assessment/core/widgets/custom_elevated_button.dart';
@@ -7,6 +6,7 @@ import 'package:auvnet_flutter_assessment/features/auth/presentation/manger/auth
 import 'package:auvnet_flutter_assessment/features/auth/presentation/manger/auth_bloc/auth_events.dart';
 import 'package:auvnet_flutter_assessment/features/auth/presentation/manger/auth_bloc/auth_state.dart';
 import 'package:auvnet_flutter_assessment/features/auth/presentation/views/login_view.dart';
+import 'package:auvnet_flutter_assessment/features/auth/presentation/views/widgets/custom_text_button.dart';
 import 'package:auvnet_flutter_assessment/features/auth/presentation/views/widgets/signup_form_field_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,21 +22,29 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
   var formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController confrimPasswordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: 16),
       child: SingleChildScrollView(
         child: BlocConsumer<AuthBloc, AuthBlocState>(
           listener: (context, state) {
-            if (state is SignUpSuccess) {
-              CustomSnackBar.successSnackBar(state.succMessage, context);
+            if (state.succMessage != null) {
+              CustomSnackBar.successSnackBar(state.succMessage!, context);
 
               AppRouteServices.pushReplaceMent(context, page: LoginView());
               context.read<AuthBloc>().close();
-            } else if (state is SignUpFailure) {
-              CustomSnackBar.errorSnackBar(state.errMessage, context);
+            } else if (state.errMessage != null) {
+              CustomSnackBar.errorSnackBar(state.errMessage!, context);
             }
           },
           builder: (context, state) {
@@ -50,16 +58,14 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                   SignupFormFieldSection(
                     emailController: emailController,
                     passwordController: passwordController,
-                    confrimPasswordController: confrimPasswordController,
+                    confrimPasswordController: confirmPasswordController,
                   ),
-                  state is SignUpLoading
+                  state.isLoading
                       ? CircularProgressIndicator()
                       : CustomElevatedButton(
                           buttonTitle: 'Sign up',
                           onPressed: () {
-                            if (formKey.currentState!.validate() &&
-                                passwordController.text ==
-                                    confrimPasswordController.text) {
+                            if (formKey.currentState!.validate()) {
                               BlocProvider.of<AuthBloc>(context).add(
                                 SignUpEvent(
                                   email: emailController.text,
@@ -69,17 +75,14 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                             }
                           },
                         ),
-                  TextButton(
+                  CustomTextButton(
+                    title: 'Already have account',
                     onPressed: () {
                       AppRouteServices.pushReplaceMent(
                         context,
                         page: LoginView(),
                       );
                     },
-                    child: Text(
-                      'Already have account',
-                      style: AppFontStyle.dmSansBold14,
-                    ),
                   ),
                 ],
               ),

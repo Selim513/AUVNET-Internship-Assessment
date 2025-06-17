@@ -11,27 +11,26 @@ class AuthBloc extends Bloc<AuthEvents, AuthBlocState> {
   AuthBloc(this.loginUseCase, this.signupUseCase) : super(AuthInitialState()) {
     on<AuthEvents>((event, emit) async {
       //-Login
-      if (event is LoginEent) {
+      if (event is LoginEvent) {
         try {
-          emit(LoginLoading());
+          emit(state.copyWith(isLoading: true));
           await loginUseCase.call(
             LoginParams(email: event.email, password: event.password),
           );
-          emit(LoginSuccess(succMessage: 'Welcome !.'));
+          emit(state.copyWith(succMessage: 'Welcome !.'));
         } catch (e) {
-          emit(LoginFailure(errMessage: e.toString()));
+          emit(state.copyWith(errMessage: e.toString(), isLoading: false));
         }
         //-SignUp--
       } else if (event is SignUpEvent) {
         try {
-          emit(SignUpLoading());
+          emit(state.copyWith(isLoading: true));
           await signupUseCase.call(
             RegisterParams(email: event.email, password: event.password),
           );
-          emit(SignUpSuccess(succMessage: 'Confrim Your Email.'));
+          emit(state.copyWith(succMessage: 'Confrim Your Email.'));
         } catch (e) {
-          print('------------------------${e.toString()}');
-          emit(SignUpFailure(errMessage: e.toString()));
+          emit(state.copyWith(errMessage: e.toString()));
         }
       }
     });

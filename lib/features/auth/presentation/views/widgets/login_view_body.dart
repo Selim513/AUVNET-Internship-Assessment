@@ -1,4 +1,3 @@
-import 'package:auvnet_flutter_assessment/core/utils/app_font_style.dart';
 import 'package:auvnet_flutter_assessment/core/utils/image_assets.dart';
 import 'package:auvnet_flutter_assessment/core/utils/route_services.dart';
 import 'package:auvnet_flutter_assessment/core/widgets/custom_elevated_button.dart';
@@ -7,6 +6,7 @@ import 'package:auvnet_flutter_assessment/features/auth/presentation/manger/auth
 import 'package:auvnet_flutter_assessment/features/auth/presentation/manger/auth_bloc/auth_events.dart';
 import 'package:auvnet_flutter_assessment/features/auth/presentation/manger/auth_bloc/auth_state.dart';
 import 'package:auvnet_flutter_assessment/features/auth/presentation/views/sign_up_view.dart';
+import 'package:auvnet_flutter_assessment/features/auth/presentation/views/widgets/custom_text_button.dart';
 import 'package:auvnet_flutter_assessment/features/auth/presentation/views/widgets/login_form_field_section.dart';
 import 'package:auvnet_flutter_assessment/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +24,13 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
@@ -32,12 +39,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           key: formKey,
           child: BlocConsumer<AuthBloc, AuthBlocState>(
             listener: (context, state) {
-              if (state is LoginSuccess) {
-                CustomSnackBar.successSnackBar(state.succMessage, context);
+              if (state.succMessage != null) {
+                CustomSnackBar.successSnackBar(state.succMessage!, context);
                 AppRouteServices.pushReplaceMent(context, page: HomeView());
                 context.read<AuthBloc>().close();
-              } else if (state is LoginFailure) {
-                CustomSnackBar.errorSnackBar(state.errMessage, context);
+              } else if (state.errMessage != null) {
+                CustomSnackBar.errorSnackBar(state.errMessage!, context);
               }
             },
             builder: (context, state) {
@@ -50,14 +57,14 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     emailController: emailController,
                     passwordController: passwordController,
                   ),
-                  state is LoginLoading
+                  state.isLoading
                       ? CircularProgressIndicator()
                       : CustomElevatedButton(
                           buttonTitle: 'Login',
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
                               BlocProvider.of<AuthBloc>(context).add(
-                                LoginEent(
+                                LoginEvent(
                                   email: emailController.text,
                                   password: passwordController.text,
                                 ),
@@ -65,7 +72,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                             }
                           },
                         ),
-                  TextButton(
+                  CustomTextButton(
+                    title: 'Create an account',
                     onPressed: () {
                       AppRouteServices.pushReplaceMent(
                         context,
@@ -73,10 +81,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                       );
                       context.read<AuthBloc>().close();
                     },
-                    child: Text(
-                      'Create an account',
-                      style: AppFontStyle.dmSansBold14,
-                    ),
                   ),
                 ],
               );

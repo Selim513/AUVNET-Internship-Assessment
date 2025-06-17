@@ -8,7 +8,7 @@ abstract class CustomSnackBar {
       SnackBar(
         content: Text(
           message,
-          style: AppFontStyle.dmSansBold14,
+          style: AppFontStyle.dmSansBold14.copyWith(color: Colors.white),
           textAlign: TextAlign.center,
         ),
         backgroundColor: Colors.red,
@@ -21,7 +21,7 @@ abstract class CustomSnackBar {
       SnackBar(
         content: Text(
           message,
-          style: AppFontStyle.dmSansBold14,
+          style: AppFontStyle.dmSansBold14.copyWith(color: Colors.white),
           textAlign: TextAlign.center,
         ),
         backgroundColor: Colors.green,
