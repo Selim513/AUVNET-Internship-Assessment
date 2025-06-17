@@ -1,5 +1,5 @@
 import 'package:auvnet_flutter_assessment/core/utils/app_color.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 abstract class AppFontStyle {
@@ -19,9 +19,21 @@ abstract class AppFontStyle {
     fontWeight: FontWeight.w600,
     fontFamily: GoogleFonts.rubik().fontFamily,
   );
-  static TextStyle dmSansBold14 = TextStyle(
+  static TextStyle rubikBold30 = TextStyle(
+    fontSize: 30,
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+    fontFamily: GoogleFonts.rubik().fontFamily,
+  );
+  static TextStyle blueDmSansBold14 = TextStyle(
     fontSize: 14,
     color: AppColors.blueColor,
+    fontWeight: FontWeight.bold,
+    fontFamily: GoogleFonts.dmSans().fontFamily,
+  );
+  static TextStyle blackDmSansBold12 = TextStyle(
+    fontSize: 14,
+    color: AppColors.blackColor,
     fontWeight: FontWeight.bold,
     fontFamily: GoogleFonts.dmSans().fontFamily,
   );
