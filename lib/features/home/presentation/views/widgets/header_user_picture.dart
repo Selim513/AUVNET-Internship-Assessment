@@ -9,7 +9,7 @@ class HeaderUserPicture extends StatelessWidget {
     return Row(
       children: [
         CircleAvatar(
-          radius: 40,
+          radius: 30,
           backgroundImage: AssetImage(ImageAssets.profile),
         ),
       ],

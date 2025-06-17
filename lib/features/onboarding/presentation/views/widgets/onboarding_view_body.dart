@@ -27,10 +27,10 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
         pageIndex = value;
         setState(() {});
       },
-      itemCount: onboardingPages.length,
+      itemCount: Constant.onboardingPages.length,
 
       itemBuilder: (context, index) {
-        final onboardingText = onboardingPages[index];
+        final onboardingText = Constant.onboardingPages[index];
         return Column(
           children: [
             OnBoardingHeader(),

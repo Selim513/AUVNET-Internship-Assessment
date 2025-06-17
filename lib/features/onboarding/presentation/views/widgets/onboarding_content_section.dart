@@ -38,7 +38,7 @@ class OnboardingContentSection extends StatelessWidget {
           Gap(14),
           TextButton(
             onPressed: () {
-              if (pageIndex < onboardingPages.length - 1) {
+              if (pageIndex < Constant.onboardingPages.length - 1) {
                 pageController.nextPage(
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
