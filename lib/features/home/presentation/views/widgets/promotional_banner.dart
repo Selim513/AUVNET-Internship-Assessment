@@ -55,7 +55,10 @@ class _PromotionalBannerState extends State<PromotionalBanner> {
                   ),
                 ),
                 Gap(10.sp),
-                CustomSmothPageIndicator(curruntIndex: curruntIndex),
+                CustomSmothPageIndicator(
+                  curruntIndex: curruntIndex,
+                  count: state.bannerImages.length,
+                ),
               ],
             ),
           );
