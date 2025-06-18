@@ -1,10 +1,7 @@
+import 'package:auvnet_flutter_assessment/core/service_locator/service_locator.dart';
 import 'package:auvnet_flutter_assessment/core/utils/route_services.dart';
 import 'package:auvnet_flutter_assessment/core/widgets/custom_elevated_button.dart';
 import 'package:auvnet_flutter_assessment/features/auth/presentation/views/login_view.dart';
-import 'package:auvnet_flutter_assessment/features/profile/data/data_source/profile_local_data_source.dart';
-import 'package:auvnet_flutter_assessment/features/profile/data/data_source/user_address_remote_data_source.dart';
-import 'package:auvnet_flutter_assessment/features/profile/data/repo/profile_repo_impl.dart';
-import 'package:auvnet_flutter_assessment/features/profile/data/repo/user_address_repo_impl.dart';
 import 'package:auvnet_flutter_assessment/features/profile/domain/use_case/image_use_case/get_profile_image_use_case.dart';
 import 'package:auvnet_flutter_assessment/features/profile/domain/use_case/image_use_case/pick_image_from_camera_use_case.dart';
 import 'package:auvnet_flutter_assessment/features/profile/domain/use_case/image_use_case/pick_image_from_gallery_use_case.dart';
@@ -43,25 +40,15 @@ class _ProfileState extends State<Profile> {
       providers: [
         BlocProvider(
           create: (context) => ProfileBloc(
-            GetProfileImageUseCase(
-              ProfileRepoImpl(ProfileLocalDataSourceImpl()),
-            ),
-            PicImageFromCammeraUseCase(
-              ProfileRepoImpl(ProfileLocalDataSourceImpl()),
-            ),
-            PicImageFromGalleryUseCase(
-              ProfileRepoImpl(ProfileLocalDataSourceImpl()),
-            ),
+            getIt.get<GetProfileImageUseCase>(),
+            getIt.get<PicImageFromCammeraUseCase>(),
+            getIt.get<PicImageFromGalleryUseCase>(),
           ),
         ),
         BlocProvider(
           create: (context) => UserAddressBloc(
-            GetUserAddressUseCase(
-              UserAddressRepoImpl(UserAddressRemoteDataSourceImpl()),
-            ),
-            SetUserAddressUseCase(
-              UserAddressRepoImpl(UserAddressRemoteDataSourceImpl()),
-            ),
+            getIt.get<GetUserAddressUseCase>(),
+            getIt.get<SetUserAddressUseCase>(),
           )..add(GetUserAddressEvent()),
         ),
       ],

@@ -23,7 +23,6 @@ class BannerImagesBloc extends Bloc<BannerImageEvent, BannerState> {
             ),
           );
         } catch (e) {
-          print('---------${e.toString()}');
           emit(
             state.copyWith(
               status: BannerStatus.failure,

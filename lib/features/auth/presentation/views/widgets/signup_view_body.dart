@@ -48,7 +48,6 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               );
               context.read<AuthBloc>().close();
             } else if (state.errMessage != null) {
-              print(state.errMessage);
               CustomSnackBar.errorSnackBar(state.errMessage!, context);
             }
           },
