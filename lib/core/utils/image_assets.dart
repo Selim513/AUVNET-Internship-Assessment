@@ -16,4 +16,12 @@ abstract class ShortcutsSectionImages {
   static String star = 'assets/images/shortcuts_section/star.png';
   static String support = 'assets/images/shortcuts_section/support.png';
   static String valut = 'assets/images/shortcuts_section/valut.png';
+  static String mm = 'assets/images/shortcuts_section/m&m.png';
+}
+
+abstract class ResturantImageAsset {
+  static String allo = 'assets/images/resturant/allo.png';
+  static String laffah = 'assets/images/resturant/laffah.png';
+  static String flafil = 'assets/images/resturant/flafil.png';
+  static String barbar = 'assets/images/resturant/barbar.png';
 }

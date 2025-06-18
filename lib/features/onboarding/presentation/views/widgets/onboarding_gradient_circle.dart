@@ -15,7 +15,7 @@ class OnboardingGradientCircle extends StatelessWidget {
           colors: [AppColors.primaryColor, AppColors.yellowColor],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          stops: [0.0, 0.8],
+          stops: const [0.0, 0.8],
         ),
       ),
     );

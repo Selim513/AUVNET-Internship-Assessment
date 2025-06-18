@@ -14,7 +14,7 @@ class LoginView extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           AuthBloc(getIt.get<LoginUseCase>(), getIt.get<SignupUseCase>()),
-      child: Scaffold(body: LoginViewBody()),
+      child: const Scaffold(body: LoginViewBody()),
     );
   }
 }

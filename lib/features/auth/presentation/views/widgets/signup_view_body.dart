@@ -34,14 +34,14 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SingleChildScrollView(
         child: BlocConsumer<AuthBloc, AuthBlocState>(
           listener: (context, state) {
             if (state.succMessage != null) {
               CustomSnackBar.successSnackBar(state.succMessage!, context);
 
-              AppRouteServices.pushReplaceMent(context, page: LoginView());
+              AppRouteServices.pushReplaceMent(context, page: const LoginView());
               context.read<AuthBloc>().close();
             } else if (state.errMessage != null) {
               CustomSnackBar.errorSnackBar(state.errMessage!, context);
@@ -61,7 +61,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     confrimPasswordController: confirmPasswordController,
                   ),
                   state.isLoading
-                      ? CircularProgressIndicator()
+                      ? const CircularProgressIndicator()
                       : CustomElevatedButton(
                           buttonTitle: 'Sign up',
                           onPressed: () {
@@ -80,7 +80,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     onPressed: () {
                       AppRouteServices.pushReplaceMent(
                         context,
-                        page: LoginView(),
+                        page: const LoginView(),
                       );
                     },
                   ),

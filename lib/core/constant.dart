@@ -1,4 +1,5 @@
 import 'package:auvnet_flutter_assessment/core/utils/image_assets.dart';
+import 'package:auvnet_flutter_assessment/features/home/presentation/models/resturant_model.dart';
 import 'package:auvnet_flutter_assessment/features/home/presentation/models/services_card_model.dart';
 import 'package:auvnet_flutter_assessment/features/home/presentation/models/shortcuts_card_model.dart';
 import 'package:auvnet_flutter_assessment/features/onboarding/presentation/models/onboarding_texts_model.dart';
@@ -53,6 +54,28 @@ abstract class Constant {
     ShortcutsCardModel(
       title: 'Best Sellers',
       image: ShortcutsSectionImages.star,
+    ),
+  ];
+  static final List<ResturantModel> resturantItem = [
+    ResturantModel(
+      time: '32 mins',
+      title: 'Allo Beirut ',
+      image: ResturantImageAsset.allo,
+    ),
+    ResturantModel(
+      time: '38 mins',
+      title: 'Laffah',
+      image: ResturantImageAsset.laffah,
+    ),
+    ResturantModel(
+      time: '44 mins',
+      title: 'Falafil AlRabiah Al kha...',
+      image: ResturantImageAsset.flafil,
+    ),
+    ResturantModel(
+      time: '34 mins',
+      title: 'Barbar',
+      image: ResturantImageAsset.barbar,
     ),
   ];
 }

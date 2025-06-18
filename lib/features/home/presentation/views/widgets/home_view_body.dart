@@ -1,6 +1,7 @@
 import 'package:auvnet_flutter_assessment/features/home/presentation/views/widgets/home_view_content.dart';
 import 'package:auvnet_flutter_assessment/features/home/presentation/views/widgets/home_view_header.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -11,7 +12,7 @@ class HomeViewBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [HomeViewHeader(), Gap(6), HomeViewContent()],
+        children: [const HomeViewHeader(), Gap(6.sp), const HomeViewContent()],
       ),
     );
   }

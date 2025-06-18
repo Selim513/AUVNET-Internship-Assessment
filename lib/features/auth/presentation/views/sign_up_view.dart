@@ -19,7 +19,7 @@ class _SignUpViewState extends State<SignUpView> {
     return BlocProvider(
       create: (context) =>
           AuthBloc(getIt.get<LoginUseCase>(), getIt.get<SignupUseCase>()),
-      child: Scaffold(body: SignUpViewBody()),
+      child: const Scaffold(body: SignUpViewBody()),
     );
   }
 }

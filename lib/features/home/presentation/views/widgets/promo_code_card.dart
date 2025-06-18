@@ -8,7 +8,7 @@ class PromoCodeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
@@ -16,16 +16,15 @@ class PromoCodeCard extends StatelessWidget {
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.2),
             blurRadius: 8,
-            offset: Offset(0, 1),
+            offset: const Offset(0, 1),
             spreadRadius: 2,
           ),
         ],
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Image.asset(ServicesSectionImages.valut),
-          PromoCodeContent(),
+          const PromoCodeContent(),
         ],
       ),
     );

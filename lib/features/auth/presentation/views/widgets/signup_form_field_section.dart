@@ -17,7 +17,7 @@ class SignupFormFieldSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 10),
+      padding: const EdgeInsetsGeometry.symmetric(horizontal: 10),
       child: Column(
         spacing: 18,
         children: [

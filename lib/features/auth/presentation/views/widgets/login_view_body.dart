@@ -8,7 +8,7 @@ import 'package:auvnet_flutter_assessment/features/auth/presentation/manger/auth
 import 'package:auvnet_flutter_assessment/features/auth/presentation/views/sign_up_view.dart';
 import 'package:auvnet_flutter_assessment/features/auth/presentation/views/widgets/custom_text_button.dart';
 import 'package:auvnet_flutter_assessment/features/auth/presentation/views/widgets/login_form_field_section.dart';
-import 'package:auvnet_flutter_assessment/features/home/presentation/views/home_view.dart';
+import 'package:auvnet_flutter_assessment/features/home/presentation/views/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,7 +33,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
+      padding: const EdgeInsetsGeometry.symmetric(horizontal: 16),
       child: SingleChildScrollView(
         child: Form(
           key: formKey,
@@ -41,7 +41,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             listener: (context, state) {
               if (state.succMessage != null) {
                 CustomSnackBar.successSnackBar(state.succMessage!, context);
-                AppRouteServices.pushReplaceMent(context, page: HomeView());
+                AppRouteServices.pushReplaceMent(
+                  context,
+                  page: const BottomNavBar(),
+                );
                 context.read<AuthBloc>().close();
               } else if (state.errMessage != null) {
                 CustomSnackBar.errorSnackBar(state.errMessage!, context);
@@ -58,7 +61,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     passwordController: passwordController,
                   ),
                   state.isLoading
-                      ? CircularProgressIndicator()
+                      ? const CircularProgressIndicator()
                       : CustomElevatedButton(
                           buttonTitle: 'Login',
                           onPressed: () {
@@ -77,7 +80,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     onPressed: () {
                       AppRouteServices.pushReplaceMent(
                         context,
-                        page: SignUpView(),
+                        page: const SignUpView(),
                       );
                       context.read<AuthBloc>().close();
                     },

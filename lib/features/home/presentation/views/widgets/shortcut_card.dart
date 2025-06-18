@@ -3,34 +3,40 @@ import 'package:auvnet_flutter_assessment/core/utils/app_color.dart';
 import 'package:auvnet_flutter_assessment/core/utils/app_font_style.dart';
 import 'package:auvnet_flutter_assessment/features/home/presentation/views/widgets/custom_card_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 
-class ShortcutCard extends StatelessWidget {
-  const ShortcutCard({super.key});
+class ShortcutCardListView extends StatelessWidget {
+  const ShortcutCardListView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      spacing: 10,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: Constant.shortcutCardItem.map((value) {
-        return Expanded(
-          child: Column(
+    return SizedBox(
+      height: 105.sp,
+      child: ListView.separated(
+        separatorBuilder: (context, index) => Gap(8.sp),
+        scrollDirection: Axis.horizontal,
+        itemCount: Constant.shortcutCardItem.length,
+        itemBuilder: (context, index) {
+          return Column(
             children: [
-              CustomCardContainer(
-                image: value.image,
+              CustomShortCutsCardContainer(
+                image: Constant.shortcutCardItem[index].image,
                 color: AppColors.lightPeachColor,
               ),
-              Text(
-                value.title,
-                textAlign: TextAlign.center,
-                style: AppFontStyle.blackDmSansBold12.copyWith(
-                  fontWeight: FontWeight.w500,
+              SizedBox(
+                width: 65.w,
+                child: Text(
+                  Constant.shortcutCardItem[index].title,
+                  textAlign: TextAlign.center,
+
+                  style: AppFontStyle.dmSansMeduim12,
                 ),
               ),
             ],
-          ),
-        );
-      }).toList(),
+          );
+        },
+      ),
     );
   }
 }

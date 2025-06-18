@@ -19,7 +19,7 @@ class OnboardingBody extends StatelessWidget {
     return Expanded(
       child: Stack(
         children: [
-          CustomBottomOnboardingGlowCircle(),
+          const CustomBottomOnboardingGlowCircle(),
           OnboardingContentSection(
             pageController: pageController,
             title: title,

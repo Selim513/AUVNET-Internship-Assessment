@@ -28,14 +28,17 @@ class OnboardingContentSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           IntroTextSection(subTitle: subTitle, title: title),
-          Gap(60),
+          const Gap(60),
           CustomElevatedButton(
             buttonTitle: 'Get Started',
             onPressed: () {
-              AppRouteServices.pushReplaceMent(context, page: LoginView());
+              AppRouteServices.pushReplaceMent(
+                context,
+                page: const LoginView(),
+              );
             },
           ),
-          Gap(14),
+          const Gap(14),
           TextButton(
             onPressed: () {
               if (pageIndex < Constant.onboardingPages.length - 1) {
@@ -44,7 +47,10 @@ class OnboardingContentSection extends StatelessWidget {
                   curve: Curves.easeInOut,
                 );
               } else {
-                AppRouteServices.pushReplaceMent(context, page: LoginView());
+                AppRouteServices.pushReplaceMent(
+                  context,
+                  page: const LoginView(),
+                );
               }
             },
             child: Text('next', style: AppFontStyle.rubikFont14),

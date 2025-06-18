@@ -15,7 +15,7 @@ class PromoCodeContent extends StatelessWidget {
         ),
         Text(
           'Add your code and save on your order',
-          style: AppFontStyle.blackDmSansBold12.copyWith(
+          style: AppFontStyle.blackDmSansBold14.copyWith(
             fontSize: 10,
             fontWeight: FontWeight.w500,
           ),

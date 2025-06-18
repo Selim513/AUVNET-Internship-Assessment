@@ -15,7 +15,7 @@ class CustomBottomOnboardingGlowCircle extends StatelessWidget {
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
-              color: Color(0xff0EBE7E).withAlpha(50),
+              color: const Color(0xff0EBE7E).withAlpha(50),
               spreadRadius: 10,
               blurRadius: 40,
             ),

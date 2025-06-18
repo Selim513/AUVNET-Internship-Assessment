@@ -8,11 +8,11 @@ class HomeViewHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(30),
+      padding: const EdgeInsets.all(30),
       width: double.infinity,
 
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(20),
         ),
@@ -20,10 +20,10 @@ class HomeViewHeader extends StatelessWidget {
           colors: [AppColors.primaryColor, AppColors.yellowColor],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          stops: [0.0, 0.8],
+          stops: const [0.0, 0.8],
         ),
       ),
-      child: HomeViewHeaderContent(),
+      child: const HomeViewHeaderContent(),
     );
   }
 }

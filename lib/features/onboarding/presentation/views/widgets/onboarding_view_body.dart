@@ -33,7 +33,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
         final onboardingText = Constant.onboardingPages[index];
         return Column(
           children: [
-            OnBoardingHeader(),
+            const OnBoardingHeader(),
             OnboardingBody(
               pageController: _pageController,
               pageIndex: pageIndex,

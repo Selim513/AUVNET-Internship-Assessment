@@ -1,9 +1,10 @@
 import 'package:auvnet_flutter_assessment/core/observer/simple_bloc_observer.dart';
 import 'package:auvnet_flutter_assessment/core/service_locator/service_locator.dart';
-import 'package:auvnet_flutter_assessment/features/home/presentation/views/home_view.dart';
+import 'package:auvnet_flutter_assessment/features/splash_screen/presentation/views/splash_view.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
@@ -15,7 +16,7 @@ void main() async {
   );
   serviceLocatorSetup();
   Bloc.observer = SimpleBlocObserver();
-  runApp(DevicePreview(builder: (context) => MainApp()));
+  runApp(DevicePreview(builder: (context) => const MainApp()));
 }
 
 class MainApp extends StatelessWidget {
@@ -23,10 +24,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.white),
-      debugShowCheckedModeBanner: false,
-      home: HomeView(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      child: MaterialApp(
+        theme: ThemeData.light().copyWith(
+          scaffoldBackgroundColor: Colors.white,
+        ),
+        debugShowCheckedModeBanner: false,
+        home: const SplashView(),
+      ),
     );
   }
 }

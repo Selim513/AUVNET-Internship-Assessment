@@ -10,10 +10,10 @@ class HeaderUserInfoSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 4,
       children: [
-        Text('Delivering to', style: AppFontStyle.blackDmSansBold12),
+        Text('Delivering to', style: AppFontStyle.blackDmSansBold14),
         Text(
           'Al Satwa, 81A Street',
-          style: AppFontStyle.blackDmSansBold12.copyWith(fontSize: 16),
+          style: AppFontStyle.blackDmSansBold14.copyWith(fontSize: 16),
         ),
         Text('Hi hepa!', style: AppFontStyle.rubikBold30),
       ],

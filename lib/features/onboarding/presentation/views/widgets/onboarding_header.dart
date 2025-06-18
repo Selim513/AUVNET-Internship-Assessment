@@ -10,7 +10,11 @@ class OnBoardingHeader extends StatelessWidget {
     return Expanded(
       child: Stack(
         children: [
-          Positioned(top: -60, left: -50, child: OnboardingGradientCircle()),
+          const Positioned(
+            top: -60,
+            left: -50,
+            child: OnboardingGradientCircle(),
+          ),
           Center(child: Image.asset(ImageAssets.logoImage)),
         ],
       ),
