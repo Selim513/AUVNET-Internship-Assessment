@@ -24,7 +24,10 @@ class UserAddressRemoteDataSourceImpl extends UserAddressRemoteDataSource {
             .select()
             .eq('id', userId)
             .maybeSingle();
-
+        await getIt.get<CacheHelper>().savedData(
+          key: LocalCachedKeys.addressKey,
+          value: response?['Address'],
+        );
         return response?['Address'];
       } on Exception catch (e) {
         throw Exception('Exception:${e.toString()}');
