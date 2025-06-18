@@ -1,3 +1,4 @@
+import 'package:auvnet_flutter_assessment/core/service_locator/service_locator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class FetchPromotionalBannerImageDataSource {
@@ -8,24 +9,22 @@ class FetchPromotionalBannerImageDataSourceImpl
     extends FetchPromotionalBannerImageDataSource {
   @override
   Future<List<String>> fetchPromotionalBannerImage() async {
-    var supabaseClient = Supabase.instance.client;
-    final response = await supabaseClient.storage
+    final response = await getIt
+        .get<SupabaseClient>()
+        .storage
         .from('banner-promotion')
         .list();
     if (response.isEmpty) {
       return [];
     }
-    // final bannerImages =  response.map((file) {
-    //   final url = supabaseClient.storage
-    //       .from('banner-promotion')
-    //       .getPublicUrl(file.name);
-    //   return url;
-    // }).toList();
+
     final bannerImages = await Future.wait(
       response.map((file) async {
-        final signedUrlResponse = await supabaseClient.storage
+        final signedUrlResponse = await getIt
+            .get<SupabaseClient>()
+            .storage
             .from('banner-promotion')
-            .createSignedUrl(file.name, 2592000); // 24 ساعة صلاحية
+            .createSignedUrl(file.name, 2592000);
 
         return signedUrlResponse;
       }),
