@@ -1,3 +1,4 @@
+import 'package:auvnet_flutter_assessment/core/service_locator/service_locator.dart';
 import 'package:auvnet_flutter_assessment/core/utils/app_color.dart';
 import 'package:auvnet_flutter_assessment/core/widgets/custom_elevated_button.dart';
 import 'package:auvnet_flutter_assessment/core/widgets/custom_snack_bar.dart';
@@ -36,7 +37,9 @@ class BottomSheetSaveAndCacnleButtons extends StatelessWidget {
               if (nameController.text.isEmpty) {
                 Navigator.pop(context);
               } else {
-                await Supabase.instance.client.auth
+                await getIt
+                    .get<SupabaseClient>()
+                    .auth
                     .updateUser(
                       UserAttributes(data: {'Name': nameController.text}),
                     )

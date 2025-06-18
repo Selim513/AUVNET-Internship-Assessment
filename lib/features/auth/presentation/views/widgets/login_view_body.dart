@@ -45,7 +45,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   context,
                   page: const BottomNavBar(),
                 );
-                context.read<AuthBloc>().close();
               } else if (state.errMessage != null) {
                 CustomSnackBar.errorSnackBar(state.errMessage!, context);
               }
@@ -82,7 +81,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                         context,
                         page: const SignUpView(),
                       );
-                      context.read<AuthBloc>().close();
                     },
                   ),
                 ],

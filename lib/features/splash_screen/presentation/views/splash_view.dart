@@ -1,3 +1,4 @@
+import 'package:auvnet_flutter_assessment/core/service_locator/service_locator.dart';
 import 'package:auvnet_flutter_assessment/core/utils/route_services.dart';
 import 'package:auvnet_flutter_assessment/features/home/presentation/views/bottom_nav_bar.dart';
 import 'package:auvnet_flutter_assessment/features/onboarding/presentation/views/onboarding_view.dart';
@@ -12,22 +13,41 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+  final supabase = getIt.get<SupabaseClient>();
+
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2)).then((value) {
-      var user = Supabase.instance.client.auth.currentUser;
-      if (user == null) {
-        AppRouteServices.pushReplaceMent(context, page: const OnboardingView());
-      }
+    _checkAuthStatus();
+  }
+
+  Future<void> _checkAuthStatus() async {
+    await Future.delayed(const Duration(seconds: 2));
+
+    final session = supabase.auth.currentSession;
+
+    if (!mounted) return;
+
+    if (session != null) {
       AppRouteServices.pushReplaceMent(context, page: const BottomNavBar());
-    });
+    } else {
+      AppRouteServices.pushReplaceMent(context, page: const OnboardingView());
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Image.asset('assets/images/nawel.png')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/images/nawel.png'),
+            const SizedBox(height: 20),
+            const CircularProgressIndicator(),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -19,7 +19,7 @@ class _HeaderUserInfoSectionState extends State<HeaderUserInfoSection> {
   @override
   void initState() {
     super.initState();
-    name = Supabase.instance.client.auth.currentUser!.userMetadata!['Name'];
+    name = getIt.get<SupabaseClient>().auth.currentUser!.userMetadata!['Name'];
     address = getIt.get<CacheHelper>().getData(key: LocalCachedKeys.addressKey);
   }
 

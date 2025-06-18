@@ -1,3 +1,4 @@
+import 'package:auvnet_flutter_assessment/core/service_locator/service_locator.dart';
 import 'package:auvnet_flutter_assessment/core/utils/app_font_style.dart';
 import 'package:auvnet_flutter_assessment/core/widgets/custom_elevated_button.dart';
 import 'package:auvnet_flutter_assessment/core/widgets/custom_snack_bar.dart';
@@ -48,7 +49,7 @@ class _AddressBottomSheetBodyState extends State<AddressBottomSheetBody> {
           CustomElevatedButton(
             buttonTitle: 'Save',
             onPressed: () async {
-              var userId = Supabase.instance.client.auth.currentUser!.id;
+              var userId = getIt.get<SupabaseClient>().auth.currentUser!.id;
               final addressText = addressController.text.trim();
 
               if (addressText.isEmpty) {

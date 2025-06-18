@@ -1,3 +1,4 @@
+import 'package:auvnet_flutter_assessment/core/service_locator/service_locator.dart';
 import 'package:auvnet_flutter_assessment/features/profile/presentation/models/user_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -6,16 +7,16 @@ abstract class UserDataRemoteDataSource {
 }
 
 class UserDataRemoteDataSourceImpl implements UserDataRemoteDataSource {
-  final SupabaseClient _supabaseClient;
+  
 
   UserDataRemoteDataSourceImpl({
     SupabaseClient? supabaseClient,
-  }) : _supabaseClient = supabaseClient ?? Supabase.instance.client;
+  }) ;
 
   @override
   Future<UserData> fetchUserData(String userId) async {
     try {
-      final response = await _supabaseClient
+      final response = await getIt.get<SupabaseClient>()
           .from('users') 
           .select('name, address')
           .eq('id', userId)

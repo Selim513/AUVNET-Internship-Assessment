@@ -31,7 +31,7 @@ class _ProfileState extends State<Profile> {
   void initState() {
     super.initState();
 
-    name = Supabase.instance.client.auth.currentUser!.userMetadata!['Name'];
+    name = getIt.get<SupabaseClient>().auth.currentUser!.userMetadata!['Name'];
   }
 
   @override

@@ -11,15 +11,18 @@ abstract class AuthRemoteDataSource {
 }
 
 class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
+  var userClint = Supabase.instance.client;
   @override
   Future<AuthResponse> login({
     required String email,
     required String password,
   }) async {
     final res = await getIt.get<SupabaseClient>().auth.signInWithPassword(
+      
       password: password,
       email: email,
     );
+
     return res;
   }
 

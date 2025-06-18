@@ -15,10 +15,11 @@ abstract class UserAddressRemoteDataSource {
 class UserAddressRemoteDataSourceImpl extends UserAddressRemoteDataSource {
   @override
   Future<String> getUserAddress() async {
-    final userId = Supabase.instance.client.auth.currentUser?.id;
+    final userId = getIt.get<SupabaseClient>().auth.currentUser?.id;
     if (userId != null) {
       try {
-        final response = await Supabase.instance.client
+        final response = await getIt
+            .get<SupabaseClient>()
             .from('Address')
             .select()
             .eq('id', userId)
@@ -39,7 +40,7 @@ class UserAddressRemoteDataSourceImpl extends UserAddressRemoteDataSource {
     required String userId,
   }) async {
     try {
-      await Supabase.instance.client.from('Address').upsert({
+      await getIt.get<SupabaseClient>().from('Address').upsert({
         "Address": address,
         "id": userId,
       });

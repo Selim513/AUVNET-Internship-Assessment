@@ -1,5 +1,4 @@
 import 'package:auvnet_flutter_assessment/core/chache/chache_helper.dart';
-import 'package:auvnet_flutter_assessment/core/constant.dart';
 import 'package:auvnet_flutter_assessment/features/auth/data/data_sorce/auth_remote_data_source.dart';
 import 'package:auvnet_flutter_assessment/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:auvnet_flutter_assessment/features/auth/domain/repo/auth_repo.dart';
@@ -103,7 +102,5 @@ void serviceLocatorSetup() {
     ),
   );
   //-supabase instance
-  getIt.registerSingleton<SupabaseClient>(
-    SupabaseClient(SupabaseSecrtKeys.urlKey, SupabaseSecrtKeys.anonKey),
-  );
+  getIt.registerSingleton<SupabaseClient>(Supabase.instance.client);
 }

@@ -8,6 +8,7 @@ import 'package:auvnet_flutter_assessment/features/auth/presentation/manger/auth
 import 'package:auvnet_flutter_assessment/features/auth/presentation/views/login_view.dart';
 import 'package:auvnet_flutter_assessment/features/auth/presentation/views/widgets/custom_text_button.dart';
 import 'package:auvnet_flutter_assessment/features/auth/presentation/views/widgets/signup_form_field_section.dart';
+import 'package:auvnet_flutter_assessment/features/home/presentation/manger/fetch_promotional_banner_images_bloc/fetch_promotional_banner_images_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,6 +28,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
   @override
   void dispose() {
     emailController.dispose();
+    nameController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
     super.dispose();
@@ -34,20 +36,21 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: BlocConsumer<AuthBloc, AuthBlocState>(
           listener: (context, state) {
-            if (state.succMessage != null) {
-              CustomSnackBar.successSnackBar(state.succMessage!, context);
+            if (state.status == BlocStatus.success) {
+              CustomSnackBar.confrimEmailSnackBar(state.succMessage!, context);
 
               AppRouteServices.pushReplaceMent(
                 context,
                 page: const LoginView(),
               );
-              context.read<AuthBloc>().close();
+              
             } else if (state.errMessage != null) {
+              
               CustomSnackBar.errorSnackBar(state.errMessage!, context);
             }
           },
@@ -71,6 +74,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                           buttonTitle: 'Sign up',
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
+                          
                               BlocProvider.of<AuthBloc>(context).add(
                                 SignUpEvent(
                                   name: nameController.text,

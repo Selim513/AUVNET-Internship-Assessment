@@ -12,14 +12,15 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await dotenv.load();
-  
   await Supabase.initialize(
     url: dotenv.get(SupabaseSecrtKeys.urlKey),
     anonKey: dotenv.get(SupabaseSecrtKeys.anonKey),
   );
   serviceLocatorSetup();
   getIt.get<CacheHelper>().cacheInit();
+
   Bloc.observer = SimpleBlocObserver();
   runApp(DevicePreview(builder: (context) => const MainApp()));
 }

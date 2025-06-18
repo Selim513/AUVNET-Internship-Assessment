@@ -11,7 +11,8 @@ class CustomTextFormField extends StatelessWidget {
     this.validator,
     this.controller,
     this.obsecure = false,
-    this.keyboardType,  this.maxLines,
+    this.keyboardType,
+    this.maxLines,
   });
   final String hintText;
   final IconData icon;
@@ -23,7 +24,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      maxLines: maxLines,
+      maxLines: maxLines ?? 1,
       keyboardType: keyboardType,
       obscureText: obsecure,
       validator: validator,

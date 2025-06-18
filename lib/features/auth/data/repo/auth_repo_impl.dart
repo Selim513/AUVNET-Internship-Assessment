@@ -1,3 +1,5 @@
+
+
 import 'package:auvnet_flutter_assessment/core/errors/supbase_errors.dart';
 import 'package:auvnet_flutter_assessment/features/auth/data/data_sorce/auth_remote_data_source.dart';
 import 'package:auvnet_flutter_assessment/features/auth/domain/repo/auth_repo.dart';
@@ -19,7 +21,7 @@ class AuthRepoImpl extends AuthRepo {
       );
       return response;
     } catch (e) {
-      final errorMessage = extractErrorMessage(e.toString());
+      final errorMessage = mapSupabaseAuthError(e.toString());
       throw errorMessage;
     }
   }
@@ -38,7 +40,7 @@ class AuthRepoImpl extends AuthRepo {
       );
       return response;
     } catch (e) {
-      final errorMessage = extractErrorMessage(e.toString());
+      final errorMessage = mapSupabaseAuthError(e.toString());
       throw errorMessage;
     }
   }
