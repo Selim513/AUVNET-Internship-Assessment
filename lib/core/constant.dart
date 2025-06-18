@@ -84,3 +84,8 @@ abstract class LocalCachedKeys {
   static String imageKey = 'image';
   static String addressKey = 'Address';
 }
+
+abstract class SupabaseSecrtKeys {
+  static String urlKey = 'SUPABASE_URL';
+  static String anonKey = 'SUPABASE_ANON_KEY';
+}
