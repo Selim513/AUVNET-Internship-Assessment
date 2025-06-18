@@ -26,11 +26,11 @@ class AuthBloc extends Bloc<AuthEvents, AuthBlocState> {
         try {
           emit(state.copyWith(isLoading: true));
           await signupUseCase.call(
-            RegisterParams(email: event.email, password: event.password),
+            RegisterParams(email: event.email, password: event.password,name: event.name),
           );
           emit(state.copyWith(succMessage: 'Confrim Your Email.'));
         } catch (e) {
-          emit(state.copyWith(errMessage: e.toString()));
+          emit(state.copyWith(errMessage: e.toString(),isLoading: false));
         }
       }
     });

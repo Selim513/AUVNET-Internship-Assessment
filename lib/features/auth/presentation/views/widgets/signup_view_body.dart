@@ -20,6 +20,7 @@ class SignUpViewBody extends StatefulWidget {
 
 class _SignUpViewBodyState extends State<SignUpViewBody> {
   var formKey = GlobalKey<FormState>();
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -41,9 +42,13 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
             if (state.succMessage != null) {
               CustomSnackBar.successSnackBar(state.succMessage!, context);
 
-              AppRouteServices.pushReplaceMent(context, page: const LoginView());
+              AppRouteServices.pushReplaceMent(
+                context,
+                page: const LoginView(),
+              );
               context.read<AuthBloc>().close();
             } else if (state.errMessage != null) {
+              print(state.errMessage);
               CustomSnackBar.errorSnackBar(state.errMessage!, context);
             }
           },
@@ -56,6 +61,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 children: [
                   Center(child: Image.asset(ImageAssets.logoImage)),
                   SignupFormFieldSection(
+                    nameController: nameController,
                     emailController: emailController,
                     passwordController: passwordController,
                     confrimPasswordController: confirmPasswordController,
@@ -68,6 +74,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                             if (formKey.currentState!.validate()) {
                               BlocProvider.of<AuthBloc>(context).add(
                                 SignUpEvent(
+                                  name: nameController.text,
                                   email: emailController.text,
                                   password: passwordController.text,
                                 ),

@@ -1,3 +1,4 @@
+import 'package:auvnet_flutter_assessment/core/chache/chache_helper.dart';
 import 'package:auvnet_flutter_assessment/features/auth/data/data_sorce/auth_remote_data_source.dart';
 import 'package:auvnet_flutter_assessment/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:auvnet_flutter_assessment/features/auth/domain/repo/auth_repo.dart';
@@ -11,6 +12,9 @@ import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
 void serviceLocatorSetup() {
+  //-SharedPreferences
+  getIt.registerSingleton<CacheHelper>(CacheHelper());
+  //-Auth
   getIt.registerSingleton<AuthRemoteDataSource>(AuthRemoteDataSourceImpl());
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImpl(getIt.get<AuthRemoteDataSource>()),

@@ -79,3 +79,8 @@ abstract class Constant {
     ),
   ];
 }
+
+abstract class LocalCachedKeys {
+  static String imageKey = 'image';
+  static String addressKey = 'Address';
+}

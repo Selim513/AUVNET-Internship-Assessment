@@ -5,7 +5,7 @@ import 'package:auvnet_flutter_assessment/features/cart/cart.dart';
 import 'package:auvnet_flutter_assessment/features/category/catehory.dart';
 import 'package:auvnet_flutter_assessment/features/delivery/delivery.dart';
 import 'package:auvnet_flutter_assessment/features/home/presentation/views/home_view.dart';
-import 'package:auvnet_flutter_assessment/features/profile/profile.dart';
+import 'package:auvnet_flutter_assessment/features/profile/presentation/views/profile.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {

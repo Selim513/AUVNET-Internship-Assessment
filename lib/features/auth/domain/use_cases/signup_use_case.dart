@@ -9,6 +9,7 @@ class SignupUseCase extends AuthUseCases<AuthResponse, RegisterParams> {
   @override
   Future<AuthResponse> call(RegisterParams registerParams) async {
     return await authRepo.signUp(
+      name: registerParams.name,
       email: registerParams.email,
       password: registerParams.password,
     );

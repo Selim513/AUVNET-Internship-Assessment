@@ -10,14 +10,17 @@ abstract class Validate {
   }
 
   static bool nameValidate(String name) {
-    if (RegExp(
-      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
-    ).hasMatch(name)) {
-      return true;
-    } else {
-      return false;
-    }
+    return RegExp(r"^[a-zA-Z\s]{2,50}$").hasMatch(name.trim());
   }
+}
+
+String? checkNameValidator(String? value) {
+  if (value == null || value.trim().isEmpty) {
+    return 'This field is required';
+  } else if (!Validate.nameValidate(value)) {
+    return 'Enter a valid name (only letters allowed)';
+  }
+  return null;
 }
 
 String? checkEmailValidator(String? value) {

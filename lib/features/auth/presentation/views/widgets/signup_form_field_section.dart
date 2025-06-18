@@ -8,11 +8,13 @@ class SignupFormFieldSection extends StatelessWidget {
     required this.emailController,
     required this.passwordController,
     required this.confrimPasswordController,
+    required this.nameController,
   });
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final TextEditingController confrimPasswordController;
+  final TextEditingController nameController;
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +24,18 @@ class SignupFormFieldSection extends StatelessWidget {
         spacing: 18,
         children: [
           CustomTextFormField(
+            keyboardType: TextInputType.name,
+            hintText: 'Name',
+            validator: (value) => checkNameValidator(value),
+            controller: nameController,
+            icon: Icons.person_2_outlined,
+          ),
+          CustomTextFormField(
             hintText: 'Email',
             validator: (value) => checkEmailValidator(value),
             controller: emailController,
             icon: Icons.email_outlined,
+            keyboardType: TextInputType.emailAddress,
           ),
           CustomTextFormField(
             obsecure: true,
@@ -33,8 +43,11 @@ class SignupFormFieldSection extends StatelessWidget {
             validator: (value) => checkPasswordValidator(value),
             hintText: 'Password',
             icon: Icons.lock_outline_rounded,
+            keyboardType: TextInputType.visiblePassword,
           ),
           CustomTextFormField(
+            keyboardType: TextInputType.visiblePassword,
+
             obsecure: true,
             controller: confrimPasswordController,
             validator: (value) =>

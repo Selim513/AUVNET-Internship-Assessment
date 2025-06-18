@@ -26,11 +26,13 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<AuthResponse> signUp({
+    required String name,
     required String email,
     required String password,
   }) async {
     try {
       final response = await authRemoteDataSource.signUp(
+        name: name,
         email: email,
         password: password,
       );

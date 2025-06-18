@@ -7,9 +7,11 @@ class CustomElevatedButton extends StatelessWidget {
     super.key,
     required this.buttonTitle,
     this.onPressed,
+    this.color,
   });
   final String buttonTitle;
   final void Function()? onPressed;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class CustomElevatedButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: color ?? AppColors.primaryColor,
           shape: ContinuousRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(20),
           ),
