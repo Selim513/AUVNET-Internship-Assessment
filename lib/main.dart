@@ -3,7 +3,6 @@ import 'package:auvnet_flutter_assessment/core/constant.dart';
 import 'package:auvnet_flutter_assessment/core/observer/simple_bloc_observer.dart';
 import 'package:auvnet_flutter_assessment/core/service_locator/service_locator.dart';
 import 'package:auvnet_flutter_assessment/features/splash_screen/presentation/views/splash_view.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -22,7 +21,7 @@ void main() async {
   getIt.get<CacheHelper>().cacheInit();
 
   Bloc.observer = SimpleBlocObserver();
-  runApp(DevicePreview(builder: (context) => const MainApp()));
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
