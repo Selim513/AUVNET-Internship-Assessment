@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class PromotionalBannerImage extends StatelessWidget {
@@ -7,7 +8,13 @@ class PromotionalBannerImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(15),
-      child: Image.network(image, fit: BoxFit.fill),
+      child: CachedNetworkImage(
+        errorWidget: (context, url, error) => const Icon(Icons.error),
+        imageUrl: image,
+        progressIndicatorBuilder: (context, url, progress) =>
+            const Center(child: CircularProgressIndicator()),
+      ),
+
       // Image.asset(ShortcutsSectionImages.mm, fit: BoxFit.fill),
     );
   }
