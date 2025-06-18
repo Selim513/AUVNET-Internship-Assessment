@@ -10,7 +10,7 @@ class BannerImagesBloc extends Bloc<BannerImageEvent, BannerState> {
     : super((const BannerState())) {
     on<BannerImageEvent>((event, emit) async {
       if (event is BannerLoading) {
-        emit(state.copyWith(status: BannerStatus.loading));
+        emit(state.copyWith(status: BlocStatus .loading));
       } else if (event is FetchBannerImages) {
         try {
           var bannerImage = await fetchPromotionalBannerUseCase.call(
@@ -18,14 +18,14 @@ class BannerImagesBloc extends Bloc<BannerImageEvent, BannerState> {
           );
           emit(
             state.copyWith(
-              status: BannerStatus.success,
+              status: BlocStatus .success,
               bannerImages: bannerImage,
             ),
           );
         } catch (e) {
           emit(
             state.copyWith(
-              status: BannerStatus.failure,
+              status: BlocStatus .failure,
               errorMessage: e.toString(),
             ),
           );

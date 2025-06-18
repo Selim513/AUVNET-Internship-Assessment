@@ -17,4 +17,4 @@ class AuthBlocState {
   }
 }
 
-class AuthInitialState extends AuthBlocState {}
+

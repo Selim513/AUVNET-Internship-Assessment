@@ -1,23 +1,23 @@
 import 'package:equatable/equatable.dart';
 
-enum BannerStatus { initial, loading, success, failure }
+ enum BlocStatus  { initial, loading, success, failure }
 
 class BannerState extends Equatable {
-  final BannerStatus status;
+  final BlocStatus  status;
   final List<String> bannerImages;
   final String? errorMessage;
   final bool isLoading;
 
   const BannerState({
     this.isLoading = false,
-    this.status = BannerStatus.initial,
+    this.status = BlocStatus .initial,
     this.bannerImages = const [],
     this.errorMessage,
   });
 
   BannerState copyWith({
     bool? isLoading,
-    BannerStatus? status,
+    BlocStatus ? status,
     List<String>? bannerImages,
     String? errorMessage,
   }) {

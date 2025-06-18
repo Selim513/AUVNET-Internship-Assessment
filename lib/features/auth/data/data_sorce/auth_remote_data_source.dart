@@ -1,3 +1,4 @@
+import 'package:auvnet_flutter_assessment/core/service_locator/service_locator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class AuthRemoteDataSource {
@@ -10,13 +11,15 @@ abstract class AuthRemoteDataSource {
 }
 
 class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
-  final user = Supabase.instance.client.auth;
   @override
   Future<AuthResponse> login({
     required String email,
     required String password,
   }) async {
-    final res = await user.signInWithPassword(password: password, email: email);
+    final res = await getIt.get<SupabaseClient>().auth.signInWithPassword(
+      password: password,
+      email: email,
+    );
     return res;
   }
 
@@ -26,7 +29,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     required String email,
     required String password,
   }) async {
-    final res = await user.signUp(
+    final res = getIt.get<SupabaseClient>().auth.signUp(
       password: password,
       email: email,
       data: {'Name': name},

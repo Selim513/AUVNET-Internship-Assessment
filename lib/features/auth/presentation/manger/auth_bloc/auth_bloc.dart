@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AuthBloc extends Bloc<AuthEvents, AuthBlocState> {
   final LoginUseCase loginUseCase;
   final SignupUseCase signupUseCase;
-  AuthBloc(this.loginUseCase, this.signupUseCase) : super(AuthInitialState()) {
+  AuthBloc(this.loginUseCase, this.signupUseCase) : super(AuthBlocState()) {
     on<AuthEvents>((event, emit) async {
       //-Login
       if (event is LoginEvent) {
@@ -26,11 +26,15 @@ class AuthBloc extends Bloc<AuthEvents, AuthBlocState> {
         try {
           emit(state.copyWith(isLoading: true));
           await signupUseCase.call(
-            RegisterParams(email: event.email, password: event.password,name: event.name),
+            RegisterParams(
+              email: event.email,
+              password: event.password,
+              name: event.name,
+            ),
           );
           emit(state.copyWith(succMessage: 'Confrim Your Email.'));
         } catch (e) {
-          emit(state.copyWith(errMessage: e.toString(),isLoading: false));
+          emit(state.copyWith(errMessage: e.toString(), isLoading: false));
         }
       }
     });

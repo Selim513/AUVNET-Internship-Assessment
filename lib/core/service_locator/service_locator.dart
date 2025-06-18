@@ -1,4 +1,5 @@
 import 'package:auvnet_flutter_assessment/core/chache/chache_helper.dart';
+import 'package:auvnet_flutter_assessment/core/constant.dart';
 import 'package:auvnet_flutter_assessment/features/auth/data/data_sorce/auth_remote_data_source.dart';
 import 'package:auvnet_flutter_assessment/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:auvnet_flutter_assessment/features/auth/domain/repo/auth_repo.dart';
@@ -22,6 +23,7 @@ import 'package:auvnet_flutter_assessment/features/profile/domain/use_case/user_
 import 'package:auvnet_flutter_assessment/features/profile/presentation/manger/profile_bloc/profile_bloc.dart';
 import 'package:auvnet_flutter_assessment/features/profile/presentation/manger/user_address_bloc/user_address_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 final getIt = GetIt.instance;
 void serviceLocatorSetup() {
@@ -99,5 +101,9 @@ void serviceLocatorSetup() {
       getIt.get<GetUserAddressUseCase>(),
       getIt.get<SetUserAddressUseCase>(),
     ),
+  );
+  //-supabase instance
+  getIt.registerSingleton<SupabaseClient>(
+    SupabaseClient(SupabaseSecrtKeys.urlKey, SupabaseSecrtKeys.anonKey),
   );
 }

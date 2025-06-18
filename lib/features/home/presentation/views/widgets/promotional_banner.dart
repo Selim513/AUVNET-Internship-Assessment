@@ -62,7 +62,7 @@ class _PromotionalBannerState extends State<PromotionalBanner> {
               ],
             ),
           );
-        } else if (state.status == BannerStatus.failure) {
+        } else if (state.status == BlocStatus .failure) {
           return const Center(child: Text('There is an error'));
         } else {
           return const Center(child: CircularProgressIndicator());
