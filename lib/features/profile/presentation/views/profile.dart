@@ -28,6 +28,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   String? name;
   @override
+  //-fetch name
   void initState() {
     super.initState();
 
@@ -67,6 +68,7 @@ class _ProfileState extends State<Profile> {
                   const AddressSection(),
 
                   const Spacer(),
+                  
                   CustomElevatedButton(
                     buttonTitle: 'Log out',
                     onPressed: () {

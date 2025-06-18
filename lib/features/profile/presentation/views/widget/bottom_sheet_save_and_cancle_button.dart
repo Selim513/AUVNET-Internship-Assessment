@@ -37,6 +37,7 @@ class BottomSheetSaveAndCacnleButtons extends StatelessWidget {
               if (nameController.text.isEmpty) {
                 Navigator.pop(context);
               } else {
+                //---save name update
                 await getIt
                     .get<SupabaseClient>()
                     .auth

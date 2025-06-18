@@ -20,6 +20,7 @@ class ProfileAndNameSection extends StatefulWidget {
 class _ProfileAndNameSectionState extends State<ProfileAndNameSection> {
   String? imagePath;
   @override
+  //-fetch image
   void initState() {
     super.initState();
     imagePath = getIt.get<CacheHelper>().getData(key: LocalCachedKeys.imageKey);
@@ -39,6 +40,7 @@ class _ProfileAndNameSectionState extends State<ProfileAndNameSection> {
         NameSection(widget: widget),
         GestureDetector(
           onTap: () {
+            //-bottomsheet for edit name and image
             showBottomSheet(
               backgroundColor: Colors.white,
               context: context,

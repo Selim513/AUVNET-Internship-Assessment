@@ -17,6 +17,7 @@ class _HeaderUserInfoSectionState extends State<HeaderUserInfoSection> {
   String? name;
   String? address;
   @override
+  //-fetch name and address
   void initState() {
     super.initState();
     name = getIt.get<SupabaseClient>().auth.currentUser!.userMetadata!['Name'];
